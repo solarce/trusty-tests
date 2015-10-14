@@ -1,14 +1,11 @@
 sudo: required
-dist: trusty
-group: edge
-language: php
-
-before_install:
-  - git clone git://github.com/phpenv/phpenv.git .phpenv
-  - echo 'export PATH="$HOME/.phpenv/bin:$PATH"' >> ~/.bash_profile
-  - echo 'eval "$(phpenv init -)"' >> ~/.bash_profile
-  - exec $SHELL
-
+language: ruby
+services:
+  - docker
 script:
-  - uname -a
-  - phpenv versions
+  - lsb_release -a
+  - docker --version
+  - docker pull alpine:3.2
+  - docker run -d -i -t --name foo alpine:3.2 ash
+  - docker ps
+  - docker exec foo echo "hello travis"
