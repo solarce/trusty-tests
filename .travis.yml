@@ -1,11 +1,8 @@
 sudo: required
-language: ruby
+language: bash
 services:
   - docker
 script:
-  - lsb_release -a
-  - docker --version
-  - docker pull alpine:3.2
-  - docker run -d -i -t --name foo alpine:3.2 ash
+  - docker run -d --name pg1 postgres:latest
+  - docker run -d --name redis1 redis:latest
   - docker ps
-  - docker exec foo echo "hello travis"
