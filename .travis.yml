@@ -11,4 +11,4 @@ script:
   - export POSTGRES_PASSWORD=postgres
   - docker run -it --name pg_test1 -e "PG_IP=$PG_IP" postgres:latest psql -h $PG_IP --username=postgres -c "show SERVER_VERSION" 
   #- docker run -it --name redis_test1 -e "REDIS_IP=$REDIS_IP" redis:latest redis-cli -h $REDIS_IP info CPU
-  - docker run -it --name redis_test1 -e "REDIS_IP=$REDIS_IP" redis:latest telnet $REDIS_IP 6379
+  - docker run -it --name redis_test1 -e "REDIS_IP=$REDIS_IP" redis:latest apt-get update && apt-get install telnet -y && telnet $REDIS_IP 6379
