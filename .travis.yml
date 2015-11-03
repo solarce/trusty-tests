@@ -9,4 +9,4 @@ script:
   - export PG_IP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' pg1)
   - export REDIS_IP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' redis1)
   - export POSTGRES_PASSWORD=postgres
-  - docker run -it --name pg_test1 -e "PG_IP=$PG_IP" postgres:latest psql -h $PG_IP --username=postgres
+  - docker run -it --name pg_test1 -e "PG_IP=$PG_IP" postgres:latest psql -h $PG_IP --username=postgres -c "show all" 
