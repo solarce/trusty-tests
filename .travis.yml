@@ -1,13 +1,7 @@
 sudo: required
 language: bash
-services:
-  - docker
+dist: trusty
+install:
+  - sudo apt-get install shellcheck
 script:
-  - docker run -d --name pg1 postgres:latest
-  - docker run -d --name redis1 redis:latest
-  - docker ps
-  - export PG_IP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' pg1)
-  - export REDIS_IP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' redis1)
-  - export POSTGRES_PASSWORD=postgres
-  - docker run -it --name pg_test1 -e "PG_IP=$PG_IP" postgres:latest psql -h $PG_IP --username=postgres -c "show SERVER_VERSION" 
-  - docker run -it --name redis_test1 -e "REDIS_IP=$REDIS_IP" redis:latest redis-cli -h $REDIS_IP info CPU
+  - true
