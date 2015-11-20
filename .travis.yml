@@ -1,8 +1,11 @@
 sudo: required
 language: python
-services:
-  - docker
 
+matrix:
+  include:
+  - os: linux
+    services:
+    - docker
 
 script:
   - true
