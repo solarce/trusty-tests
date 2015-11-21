@@ -6,6 +6,8 @@ matrix:
   - os: linux
     services:
     - docker
+  - os: osx
+    language: generic
 
 script:
   - true
