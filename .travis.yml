@@ -3,4 +3,5 @@ dist: trusty
 language: ruby
 
 script:
+  - sudo apt-get update
   - curl -v https://www.myget.org/F/aspnetcidev/api/v2/package/dnx-coreclr-linux-x64/1.0.0-rc2-16256 -o ~/foo
