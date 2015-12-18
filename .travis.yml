@@ -1,7 +1,12 @@
 sudo: required
 dist: trusty
+group: edge
 language: ruby
 
-script:
+before_install:
   - sudo apt-get update
-  - curl -v https://www.myget.org/F/aspnetcidev/api/v2/package/dnx-coreclr-linux-x64/1.0.0-rc2-16256 -o ~/foo
+  - sudo apt-get install mysql-server -y
+
+script:
+  - sudo service mysql status
+  - mysql --version
