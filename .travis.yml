@@ -1,12 +1,25 @@
 sudo: required
 dist: trusty
-language: ruby
+language: erlang
 
 before_script:
-  - wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-  - echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
-  - sudo apt-get update && sudo apt-get install elasticsearch
-  - sudo service elasticsearch start
+  - psql --version
+  - sudo /etc/init.d/postgresql stop
+  - sudo apt-get -y remove --purge postgresql-9.1
+  - sudo apt-get -y remove --purge postgresql-9.2
+  - sudo apt-get -y remove --purge postgresql-9.3
+  - sudo apt-get -y remove --purge postgresql-9.4
+  - sudo apt-get -y autoremove
+  - sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 7FCC7D46ACCC4CF8
+  - sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main 9.5" >> /etc/apt/sources.list.d/postgresql.list'
+  - sudo apt-get update
+  - sudo apt-get -y install postgresql-9.5-postgis-2.2
+  - sudo sh -c 'echo "local all postgres trust" > /etc/postgresql/9.5/main/pg_hba.conf'
+  - sudo sh -c 'echo -n "host all all 127.0.0.1/32 trust" >> /etc/postgresql/9.5/main/pg_hba.conf'
+  - sudo /etc/init.d/postgresql restart
+  - psql --version
+  - psql -c 'create database nucleus;' -U postgres
+  - psql -U postgres -h localhost -w -c "CREATE EXTENSION postgis;" nucleus
 
 script:
   - true
