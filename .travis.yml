@@ -1,9 +1,15 @@
 sudo: required
 dist: trusty
+language: python
 
-matrix:
-  include:
-  - language: python
+env:
+  global:
+  - DOCKER_VERSION="1.9.0-0~trusty"
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get remove docker-engine -yq
+  - sudo apt-get install docker-engine=$DOCKER_VERSION -yq --no-install-suggests --no-install-recommends --force-yes
 
 script:
   - docker version
