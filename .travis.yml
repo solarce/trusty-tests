@@ -3,8 +3,7 @@ dist: trusty
 
 matrix:
   include:
-  - language: generic
   - language: python
 
 script:
-  - sudo df -h /
+  - docker version
