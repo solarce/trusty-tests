@@ -7,9 +7,12 @@ env:
   - DOCKER_VERSION="1.9.1-0~trusty"
 
 before_install:
-  - sudo apt-get update
-  - sudo apt-get remove docker-engine -yq
-  - sudo apt-get install docker-engine=$DOCKER_VERSION -yq --no-install-suggests --no-install-recommends --force-yes -o Dpkg::Options::="--force-confnew"
+  - cat /etc/hosts
+  - ping -c 4 -W 1 localhost
+  - sudo cp /etc/hosts /tmp/etc_hosts_original
+  - head -n 8 /etc/hosts| tail -n 4 > /tmp/etc_hosts
+  - sudo cp /tmp/etc_hosts /etc/hosts
+  - cat /etc/hosts
 
 script:
-  - docker version
+  - ping -c 4 -W 1 localhost
