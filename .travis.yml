@@ -1,6 +1,6 @@
 sudo: required
 dist: trusty
-group: beta
+group: edge
 language: php
 
 addons:
