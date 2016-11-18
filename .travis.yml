@@ -10,7 +10,7 @@ addons:
     - mysql-client-5.5
 
 install:
-  - sudo apt-get info mysql-server-5.5
+  - sudo apt-cache info mysql-server-5.5
 
 script:
   - uname -a
