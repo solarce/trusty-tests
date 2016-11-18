@@ -1,16 +1,10 @@
 sudo: required
 dist: trusty
-language: generic
+language: c
 
-addons:
-  apt:
-    packages:
-    - mysql-server-5.5
-    - mysql-client-core-5.5
-    - mysql-client-5.5
 
 install:
-  - sudo apt-cache show mysql-server-5.5
+  - sudo apt-get install -qq --no-install-recommends mariadb-client mariadb-server
 
 script:
   - uname -a
