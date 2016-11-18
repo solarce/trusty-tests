@@ -4,6 +4,8 @@ language: c
 
 
 install:
+  - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ trusty multiverse" && sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ trusty-updates multiverse"
+  - sudo apt-get update
   - sudo apt-get install -qq --no-install-recommends mariadb-client mariadb-server
 
 script:
