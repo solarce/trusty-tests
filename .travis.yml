@@ -3,15 +3,11 @@ dist: trusty
 group: edge
 language: php
 
-addons:
-  apt:
-    packages:
-    - mysql-server-5.5
-    - mysql-client-core-5.5
-    - mysql-client-5.5
 
 install:
-  - sudo apt-cache show mysql-server-5.5
+  - sudo apt purge mysql-server-5.5 mysql-client-core-5.5 mysql-client-5.5 mysql-client-core-5.6 mysql-server-core-5.6
+  - sudo rm -rf /var/lib/mysql
+  - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install mysql-server-5.5 mysql-client-core-5.5 mysql-client-5.5
 
 script:
   - uname -a
