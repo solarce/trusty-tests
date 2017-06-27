@@ -1,6 +1,6 @@
-language: __amethyst__
+language: __connie__
 dist: trusty
-env: STACK=amethyst GROUP=stable
+env: STACK=connie GROUP=stable
 group: stable
 
 install: echo uhm
