@@ -1,6 +1,5 @@
 sudo: false
 dist: trusty
-group: stable
 
 script:
   - sudo ls /root/
