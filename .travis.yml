@@ -1,9 +1,6 @@
-language: __connie__
+sudo: false
 dist: trusty
-env: STACK=connie GROUP=stable
 group: stable
 
-install: echo uhm
 script:
-- sudo apt-get update
-- sudo apt-cache search docker
+  - sudo ls /root/
